@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>题解：日期问题之今年的第几天</title>
+    <link href="/2022/01/28/%E9%A2%98%E8%A7%A3%EF%BC%9A%E6%97%A5%E6%9C%9F%E9%97%AE%E9%A2%98%E4%B9%8B%E4%BB%8A%E5%B9%B4%E7%9A%84%E7%AC%AC%E5%87%A0%E5%A4%A9/"/>
+    <url>/2022/01/28/%E9%A2%98%E8%A7%A3%EF%BC%9A%E6%97%A5%E6%9C%9F%E9%97%AE%E9%A2%98%E4%B9%8B%E4%BB%8A%E5%B9%B4%E7%9A%84%E7%AC%AC%E5%87%A0%E5%A4%A9/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解：日期问题之今年的第几天"><a href="#题解：日期问题之今年的第几天" class="headerlink" title="题解：日期问题之今年的第几天"></a>题解：日期问题之今年的第几天</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入年、月、日，计算该天是本年的第几天。</p><h2 id="输入："><a href="#输入：" class="headerlink" title="输入："></a>输入：</h2><p>包括三个整数年(1&lt;=Y&lt;=3000)、月(1&lt;=M&lt;=12)、日(1&lt;=D&lt;=31)。</p><h2 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h2><p>输入可能有多组测试数据，对于每一组测试数据， 输出一个整数，代表Input中的年、月、日对应本年的第几天。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：</p><figure class="highlight basic"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">1990 </span><span class="hljs-number">9</span> <span class="hljs-number">20</span><br><span class="hljs-symbol">2000 </span><span class="hljs-number">5</span> <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure><p>输出：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">263<br>122<br></code></pre></td></tr></table></figure><hr><h2 id="代码（C-C"><a href="#代码（C-C" class="headerlink" title="代码（C/C++)"></a>代码（C/C++)</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> year=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> month=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> date=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> count[<span class="hljs-number">12</span>]=&#123;<span class="hljs-number">31</span> , <span class="hljs-number">28</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>&#125;;<br>    <span class="hljs-keyword">while</span>(cin&gt;&gt;year&gt;&gt;month&gt;&gt;date)&#123;<br>        <span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span> flag=<span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;month<span class="hljs-number">-1</span>;i++)&#123;<br>            sum += count[i];<br>        &#125;<br>        <span class="hljs-keyword">if</span>(((year%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;year%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||year%<span class="hljs-number">400</span> ==<span class="hljs-number">0</span>)&amp;&amp;month&gt;<span class="hljs-number">2</span>)&#123;<br>            sum++;<br>        &#125;<br>        cout&lt;&lt;sum+date&lt;&lt;endl;<br>    &#125;<br>    <br><br>&#125;<br></code></pre></td></tr></table></figure><h2 id="PS："><a href="#PS：" class="headerlink" title="PS："></a>PS：</h2><p>== <strong>注意闰年的判定方法</strong> ==</p><ul><li><p>非整百年份：能被4整除的是闰年。（如2004年就是闰年，2001年不是闰年）</p></li><li><p>整百年份：能被400整除的是闰年。（如2000年是闰年，1900年不是闰年）</p></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>题解</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
